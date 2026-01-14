@@ -6,6 +6,18 @@ var speed: int = 200
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
+	animation()
 	move_and_slide()
   
-	 
+func animation():
+	if direction:
+		if direction.x < 0:
+			$AnimatedSprite2D.play("left")
+		elif direction.y < 0:
+			$AnimatedSprite2D.play("up")
+		elif direction.y > 0:
+			$AnimatedSprite2D.play("down")
+		else:
+			$AnimatedSprite2D.play("right")
+	else:
+		$AnimatedSprite2D.play("idle")
