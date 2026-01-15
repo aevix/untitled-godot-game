@@ -8,6 +8,8 @@
 texture = ExtResource("1_6wonf")
 
 [node name="staticbody2d" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="staticbody2d"]
 build_mode = 1
