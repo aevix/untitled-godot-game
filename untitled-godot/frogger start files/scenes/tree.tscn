@@ -5,14 +5,16 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vplca"]
 radius = 4.0
-height = 16.0
+height = 18.75
 
 [node name="tree" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_vplca")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_avsvi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 8)
+scale = Vector2(0.8799983, 0.64)
 shape = SubResource("CapsuleShape2D_vplca")
