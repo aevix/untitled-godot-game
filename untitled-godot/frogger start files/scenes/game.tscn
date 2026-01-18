@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cv7jre8rppoli"]
+[gd_scene load_steps=39 format=3 uid="uid://cv7jre8rppoli"]
 
 [ext_resource type="Script" uid="uid://4vxvmd16aeo1" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://qfhrp6f852ur" path="res://scenes/boundary.tscn" id="1_lnu2h"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c5iy3tuxd0vaw" path="res://graphics/objects/barrier.png" id="17_1kice"]
 [ext_resource type="Texture2D" uid="uid://cxutqp0hti8vw" path="res://graphics/objects/bench.png" id="18_5newe"]
 [ext_resource type="Texture2D" uid="uid://beho7qo80tneo" path="res://graphics/objects/bin.png" id="19_37s47"]
+[ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://fonts/Better VCR 9.0.1.ttf" id="20_1kice"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(381, 194)
@@ -78,6 +79,8 @@ script = ExtResource("1_lbhrr")
 
 [node name="finish_area" type="Area2D" parent="."]
 position = Vector2(-14, -197)
+collision_layer = 0
+collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="finish_area"]
@@ -621,6 +624,14 @@ metadata/_edit_lock_ = true
 position = Vector2(196, 171)
 metadata/_edit_lock_ = true
 
-[connection signal="area_entered" from="finish_area" to="." method="_on_area_2d_area_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 72.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_1kice")
+theme_override_font_sizes/font_size = 40
+text = "Timer: "
+
 [connection signal="body_entered" from="finish_area" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="car_timer/Timer" to="." method="_on_timer_timeout"]
