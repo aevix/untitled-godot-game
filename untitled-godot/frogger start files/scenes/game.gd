@@ -2,8 +2,17 @@ extends Node2D
 
 var car_scene: PackedScene = preload("res://scenes/car_scene.tscn")
 
+func _process(delta):
+	Global.score += delta
+	$CanvasLayer/Label.text = $CanvasLayer/Label.text.get_slice(' ',0) + " " + str(int(Global.score))
+	
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print('character entered the area')
+	call_deferred("change_scene")
+
+
+func change_scene():
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 
 func _on_timer_timeout() -> void:
@@ -14,5 +23,4 @@ func _on_timer_timeout() -> void:
 	car.get_child(0).connect("body_entered", go_to_title)
 
 func go_to_title(body):
-	print(body)
-	print('player died')	
+	call_deferred("change_scene")
