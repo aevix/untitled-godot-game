@@ -2,19 +2,13 @@ extends Node2D
 
 var car_scene: PackedScene = preload("res://scenes/car_scene.tscn")
 
-var time_elapsed = 0
-
 func _process(delta):
-	time_elapsed += delta
-	#var minutes = int(time_elapsed / 60)
-	#var seconds = int(time_elapsed % 60)
-	#var time_str = "%02d:%02d" % [minutes, seconds]
-	$CanvasLayer/Label.text = $CanvasLayer/Label.text.get_slice(' ',0) + " " + str(int(time_elapsed))
+	Global.score += delta
+	$CanvasLayer/Label.text = $CanvasLayer/Label.text.get_slice(' ',0) + " " + str(int(Global.score))
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	call_deferred("change_scene")
-	print(body)
 
 
 func change_scene():

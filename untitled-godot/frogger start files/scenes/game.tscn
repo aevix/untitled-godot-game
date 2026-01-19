@@ -631,7 +631,7 @@ offset_right = 72.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("20_1kice")
 theme_override_font_sizes/font_size = 40
-text = "Timer: "
+text = "Score: "
 
 [connection signal="body_entered" from="finish_area" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="car_timer/Timer" to="." method="_on_timer_timeout"]
